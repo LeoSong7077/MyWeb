@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>myPage</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/8b3b5c20cb.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="scripts/localStorage.js"></script>
+  <!-- <script type="text/javascript" src="scripts/weather.js"></script> -->
+  <script type="text/javascript" src="scripts/link.js"></script>
+  <script type="text/javascript" src="scripts/calendar.js"></script>
+  <script type="text/javascript" src="scripts/datawork.js"></script>
+  <script type="text/javascript" src="scripts/passage.js"></script>
+  <script type="text/javascript" src="scripts/toolPage.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/leftPage.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/middlePage.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/rightPage.css"/>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet">
+  <style>
+  </style>
+  <script>
+    //할것
+    //버튼 토글
+    //jQuery 사용 안하는 방법 찾기, 적용
+    //전역변수l
+
+    $(document).ready(function() {
+      //leftPage
+      createSideElements();
+      loadTools();
+
+      //middlePage
+      const today = new Date();
+      //const date = new Date(today.getFullYear(), today.getMonth() + 30);
+      allWorks(today);
+
+      //rightPage
+    });
+
+    function allWorks(date) {
+      doRandomPassage();
+      makeCalendars(date);
+      updateLinks();
+      showTodayPlan(date);
+      if(localStorage.getItem('isFirst') !== 'false') {
+        initPlans(date);
+        return;
+      }
+      updatePlans(date);
+    }
+
+    let position = 'middle'; //left, middle, right
+
+    function leftButtonClick() {
+      if (position === 'middle') {
+        $('#pageBox').css('margin-left', 0);
+        $('#leftButtonBox').css('display', 'none');
+        position = 'left';
+      } else {
+        $('#pageBox').css('margin-left', '-100%');
+        $('#rightButtonBox').css('display', 'block');
+        position = 'middle';
+      }
+    }
+
+    function rightButtonClick() {
+      if (position === 'middle') {
+        $('#pageBox').css('margin-left', '-200%');
+        $('#rightButtonBox').css('display', 'none');
+        position = 'right';
+      } else {
+        $('#pageBox').css('margin-left', '-100%');
+        $('#leftButtonBox').css('display', 'block');
+        position = 'middle';
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <div id="container">
+    <!-- 버튼들 화살표 이미지로 대체! -->
+    <!-- <div id="leftButtonBox" class="buttonBox"><input type="button" value="left" onclick="leftButtonClick()"></div>
+    <div id="rightButtonBox" class="buttonBox"><input type="button" value="right" onclick="rightButtonClick()"></div> -->
+    <div id="leftButtonBox" class="buttonBox"><img src="images/left-arrow.png" onclick="leftButtonClick()"></div>
+    <div id="rightButtonBox" class="buttonBox"><img src="images/right-arrow.png" onclick="rightButtonClick()"></div>
+    <div id="pageBox">
+
+      <div id="leftPage" class="page">
+        <div id="leftPageContainer">
+          <p id="leftPageName">My Code Tool</p>
+          <div id="header">
+            <div id="mode"><span>mode: </span><span id="modeValue">READ</span></div>
+            <div id="buttonBox">
+              <input class="headerButton" id="addButton" type="button" value="add" onclick="clickAdd()">
+              <input class="headerButton" id="cancelButton" type="button" value="cancel" onclick="clickCancel()">
+              <input class="headerButton" id="deleteButton" type="button" value="delete" onclick="clickDelete()">
+            </div>
+          </div>
+          <div id="content">
+
+            <!-- DEFAULT - display:none -->
+            <!-- <input id="addExitButton" type="button" value="X" onclick="clickCancel()"> -->
+            <i id="addExitButton" class="fas fa-times exitButton" onclick="clickCancel()"></i>
+
+            <div id="addContainer">
+              <!-- <div id="addBox">
+                <div>새로운 코딩도구 추가</div>
+                <div id="languageBox">
+                  <label for="language">language:</label>
+                  <select id="language" name="language">
+                      <option value="">--선택하세요--</option>
+                      <option value="JAVASCRIPT">JAVASCRIPT</option>
+                      <option value="HTML">HTML</option>
+                      <option value="CSS">CSS</option>
+                      <option value="JAVA">JAVA</option>
+                      <option value="REACT">REACT</option>
+                  </select>
+                </div>
+                <div id="toolName">
+                  <p>도구 이름</p>
+                  <input value="">
+                </div>
+                <div id="toolAddress">
+                  <p>주소</p>
+                  <input value="">
+                </div>
+                <input id="addSubmitButton" type="button" value="완료" onclick="addTool()">
+              </div> -->
+            </div>
+
+            <div id="side">
+              <!-- <div>JAVASCRIPT</div>
+              <div>HTML</div>
+              <div>CSS</div>
+              <div>JAVA</div>
+              <div>REACT</div> -->
+            </div>
+            <div id="main">
+              <!-- <div id="JAVASCRIPT">
+                <a href="">Date</a>
+              </div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="middlePage" class="page">
+
+        <div id="addLinkContainer">
+          <i id="addLinkExit" class="fas fa-times exitButton" onclick="clickAddLinkExit()"></i>
+
+          <div id="addLinkBox">
+            <p>링크 추가</p>
+            <div id="addLinkNameBox">
+              <label>이름</label>
+              <input id="addLinkName">
+            </div>
+            <div id="addLinkAddressBox">
+              <label>주소</label>
+              <input id="addLinkAddress">
+            </div>
+            <input id="addLinkSubmit" type="button" onclick="clickAddLink()" value="추가">
+          </div>
+        </div>
+
+        <div id="passage_container">
+          <p id="middlePageName">My Web</p>
+          <!-- <h2>오늘의 글귀</h2> -->
+          <div id="passageBox">
+            <span id="passage"></span>
+          </div>
+        </div>
+        <div id="link_weather_container">
+          <div id="link_container">
+            <!-- <h2>Link</h2> -->
+              <!-- 링크 추가: 버튼, text input 해서 가능하게 하기 -->
+              <!-- 링크 삭제 기능, 좀 마지막에 구현, 안할 수도 있다. -->
+              <!-- 마우스를 올렸을때 (-) 아이콘 버튼 구석에 표시 -->
+              <!-- 링크 최대 개수 9개로 한정 -->
+              <div id="linkBox">
+                <div>
+                  <a href="https://dgsong7077.tistory.com/manage/posts" target="_blank">
+                    <img class="link-icon" src='images/tstory.webp'>
+                    <span>블로그</span>
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.google.com/" target="_blank">
+                    <img class="link-icon" src='images/google.ico'>
+                    <span>구글</span>
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.naver.com/" target="_blank">
+                    <img class="link-icon" src='images/naver.ico'>
+                    <span>네이버</span>
+                  </a>
+                </div>
+              </div>
+              <input type="button" id="plusButton" onclick="clickLinkPlus()" value="+">
+              <input type="button" id="minusButton" onclick="clickLinkMinus()" value="-">
+              <input type="button" id="minusCancelButton" onclick="clickLinkMinusCancel()"  value="x">
+          </div>
+          <!-- <div id="weather_container">
+            <h2>weather</h2>
+          </div> -->
+        </div>
+        <div id="plan_container">
+          <!-- <h2>이날의 계획</h2> -->
+          <div id="planBox">
+            <p><span></span><span id="selected"></span></p>
+            <div>
+              <div id="plan">
+                <!-- <p>할일:</p> -->
+                <pre onclick="editPlan()"></pre>
+                <input type="button" id="editButton" onclick="editPlan()" value="수정">
+              </div>
+              <div id="plan_edit">
+                <!-- <p>할일:</p> -->
+                <textarea></textarea>
+                <input type="button" id="saveButton" onclick="savePlan()" value="저장">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="calendar_container">
+          <!-- <h2>달력</h2> -->
+          <div id="calendarBox">
+            <div id="last_calendarBox">
+              <p class="year"></h3>
+              <table id="last_calendar">
+                <caption class="month"></caption>
+                <tbody>
+                  <tr class="days">
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="now_calendarBox">
+              <p class="year"></h3>
+              <table id="now_calendar">
+                <caption class="month"></caption>
+                <tbody>
+                  <tr class="days">
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="next_calendarBox">
+              <p class="year"></h3>
+              <table id="next_calendar">
+                <caption class="month"></caption>
+                <tbody>
+                  <tr class="days">
+                    <td>일</td>
+                    <td>월</td>
+                    <td>화</td>
+                    <td>수</td>
+                    <td>목</td>
+                    <td>금</td>
+                    <td>토</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="rightPage" class="page"></div>
+    </div>
+  </div>
+</body>
+
+</html>

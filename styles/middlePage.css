@@ -1,0 +1,380 @@
+div#middlePage {
+    position:relative;
+    margin-top: -30px;
+}
+
+div#addLinkContainer {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.7);
+
+  display:none;
+  justify-content: center;
+  align-items: center;
+}
+
+#addLinkContainer #addLinkExit {
+  font-size: 40px;
+}
+
+div#addLinkBox {
+  position:relative;
+  width:600px;
+  height:260px;
+  border-radius: 20px;
+  margin-bottom: 400px;
+  background-color: #282828;
+  color:white;
+}
+
+#addLinkBox p {
+  font-size: 18px;
+  margin:20px;
+}
+
+#addLinkBox div {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:90%;
+  margin:20px auto;
+}
+
+#addLinkBox div label {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+#addLinkBox div input {
+  font-size: 15px;
+  padding:2px;
+}
+
+#addLinkSubmit {
+  position:absolute;
+  right:5%;
+  bottom:20px;
+  border-radius: 5px;
+  background-color:white;
+  padding:3px 6px;
+}
+
+#addLinkSubmit:hover {
+  background-color: #bebebe;
+}
+
+div#middlePage > div {
+  /* border-top: 1px solid black; */
+  margin:30px auto;
+}
+
+/* --------------------passage-------------------- */
+div#passage_container {
+  /* width:800px; */
+  /* margin:0 auto; */
+  /* border: 1px solid black; */
+}
+
+#middlePageName {
+  font-size:50px;
+  margin:80px 50px;
+  padding:0;
+  line-height: 0;
+}
+
+div#passageBox {
+  text-align: center;
+}
+
+#passage {
+  background-color: #E8F5FF;
+  padding:20px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  border:5px outset #dcdcdc;
+}
+
+div#link_weather_container {
+  width:980px;
+  margin:0 auto;
+  /* border:1px solid black; */
+  display:flex;
+  flex-direction: row;
+}
+/* --------------------link-------------------- */
+div#link_container {
+  width:100%;
+  height:100%;
+  /* border:1px solid black; */
+  /* border:1px solid silver; */
+  border-radius: 15px;
+  border:5px outset #dcdcdc;
+  background-color: #F0FFF0;
+  margin:20px;
+
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#linkBox {
+  display:flex;
+}
+
+#linkBox div {
+  width:140px;
+  position:relative;
+
+  display:flex;
+  justify-content: center;
+}
+
+#linkBox div a {
+}
+
+img.link-icon {
+  display:block;
+  width:50px;
+  height:50px;
+  border:1px solid silver;
+  border-radius: 20px;
+  /* margin:10px; */
+  /* margin:15px 15px 0 15px; */
+  margin:15px auto 0 auto;
+  padding:5px;
+}
+
+#linkBox span {
+  display:block;
+  margin:0 15px 15px 15px;
+  text-align: center;
+
+  font-size: 15px;
+  font-family: monospace;
+}
+
+#link_container input {
+  display:block;
+  width:27px;
+  height:50px;
+  font-size: 30px;
+  border:0;
+  background-color: #464646;
+  color:white;
+  cursor:pointer;
+}
+
+input#plusButton {
+  border-radius: 10px 0 0 10px;
+  margin: 15px 0 30px 15px;
+  border-right: 1px solid white;
+}
+
+input#plusButton:hover {
+  background-color:#0064FF;
+}
+
+input#minusButton {
+  border-radius: 0 10px 10px 0;
+  margin: 15px 15px 30px 0;
+}
+
+input#minusButton:hover {
+  background-color:#FF5675;
+}
+
+input#minusCancelButton {
+  display:none;
+  border-radius: 0 10px 10px 0;
+  margin: 15px 15px 30px 0;
+  background-color:red;
+}
+
+input#minusCancelButton:hover {
+  background-color: #FF5675;
+}
+
+.linkCancelIcon {
+  display:none;
+  position:absolute;
+  z-index: 1;
+  right:30px;
+  top:10px;
+  font-size: 20px;
+  color:red;
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+/* --------------------weather-------------------- */
+div#weather_container {
+  width:300px;
+  /* border:1px solid silver; */
+  border-radius: 15px;
+  background-color: #EBFBFF;
+  margin:5px;
+  padding:5px;
+}
+
+
+/* --------------------plan-------------------- */
+div#plan_container {
+
+}
+
+div#planBox {
+  width:400px;
+  margin:0 auto;
+  background-color:#FAF58C;
+  border:1px solid #FFF064;
+  padding:5px 10px;
+  box-shadow: 15px 15px 15px 15px gray;
+  border-radius: 10px;
+}
+
+#planBox p {
+  margin-bottom: 15px;
+}
+
+#selected {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+}
+
+div#planBox div div{
+  width:400px;
+}
+
+#plan {
+  display:block;
+}
+
+#plan_edit {
+  display:none;
+}
+
+#plan pre {
+  padding:2px;
+  margin:0 auto;
+  padding:15px;
+  height:220px;
+  width:360px;
+
+  border:1px solid #464646;
+  /* background-color: #fdfdec; */
+  background-color: white;
+
+  font-size: 20px;
+
+  transition:1s;
+}
+
+#plan_edit textarea {
+  margin:0 auto;
+  padding:15px;
+  height:220px;
+  width:360px;
+
+  display:block;
+  /* background-color: #fdfdec; */
+  background-color: white;
+
+  font-size: 20px;
+
+  transition:1s;
+}
+
+#editButton, #saveButton {
+  margin:5px 10px;
+  padding:5px 10px;
+}
+
+.days td:first-child {
+  color:red;
+}
+
+
+/* --------------------calendar-------------------- */
+div#calendar_container {
+
+}
+
+div#calendar_container div#calendarBox {
+  margin:0 auto;
+  width:80%;
+  display:flex;
+  /* background-color: aquamarine; */
+  justify-content: space-around;
+  /* align-items: center; */
+}
+
+#last_calendarBox, #now_calendarBox, #next_calendarBox {
+
+}
+
+#calendarBox .month {
+  font-weight: bold;
+  font-size:20px;
+  color:black;
+  margin:5px auto;
+  margin-top: 0;
+}
+
+#calendarBox .year {
+  margin: 0 auto;
+  text-align: center;
+  color:black;
+}
+
+table {
+  margin:0 10px;
+  border-collapse:collapse;
+  background-color: #464646;
+  border:1px solid black;
+  /* width:400px;
+  height:300px; */
+  box-shadow: 10px 10px 10px gray;
+}
+
+div#now_calendarBox table {
+  /* width:400px;
+  height:300px; */
+  font-size: 14px;
+}
+
+div#last_calendarBox table, div#next_calendarBox table {
+  /* width:360px; 
+  height:264px;  */
+  font-size: 12px;
+}
+
+div#now_calendarBox td {
+  width:60px;
+  height:40px;
+}
+
+div#last_calendarBox td, div#next_calendarBox td {
+  width:54px;
+  height:36px;
+}
+
+tr.days td {
+  text-align: center;
+  border:1px solid black;
+  color:white;
+}
+
+tr.dates td { 
+  border:1px solid black;
+  padding:3px;
+  vertical-align: top;
+  /* 글자색은 dates들 생성시 인라인으로 설정함 (주말 빨간색 표시를 위한 3항연산자 사용 때문에)*/
+}
+
+i {
+  font-size: 3px;
+  text-align: center;
+  margin:0;
+  color:#FAF58C;
+}

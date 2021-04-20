@@ -1,0 +1,187 @@
+#leftPageContainer {
+    width:800px;
+    height:700px;
+    margin: 50px auto;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#leftPageName {
+    font-size: 30px;
+    margin:5px;
+}
+
+#header {
+    flex:1.5;
+    width:100%;
+    background-color:#2828CD;
+
+    display:flex;
+    align-items: center;
+
+    box-shadow: 15px 15px 15px gray;
+}
+
+#header #mode {
+    position: absolute;
+    background-color: #FFD9E4;
+    padding:5px 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    /* width:120px; */
+}
+
+#header #mode #modeValue {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#header #buttonBox {
+    flex:1;
+
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-right: 20px;
+}
+
+.headerButton {
+    margin-left: 10px;
+    font-size: 18px;
+    padding:5px 10px;
+    
+}
+
+#addButton, #deleteButton {
+    background-color: #C8D7FF;
+    border-radius: 5px;
+}
+
+#cancelButton {
+    display:none;
+    background-color: black;
+    color: white;
+}
+
+#content {
+    flex:10;
+    display:flex;
+    height:100%;
+    position:relative;
+
+    box-shadow: 15px 15px 15px gray;
+}
+
+#content #addExitButton {
+    display:none;
+}
+
+#content #addContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: black;
+    opacity: 0.8; */
+    background-color: rgb(0, 0, 0, 0.7);
+
+    /* 가운데 정렬 */
+    display:none;
+    /* display:flex; */
+    align-items: center;
+    justify-content: center;
+}
+
+#content #addContainer #addBox {
+    position: relative;
+    padding:15px;
+    color:white;
+    width:50%;
+    height:42%;
+    background-color: #282828;
+    border-radius: 10px;
+
+    margin-bottom: 10%;
+}
+
+#addBox #toolNameBox, #toolAddressBox {
+    font-size: small;
+    margin:20px auto;
+}
+
+#addBox #languageBox {
+    width:90%;
+    margin:15px auto;
+}
+
+#addBox div input, p {
+    display:block;
+    width:90%;
+    margin:5px auto;
+}
+
+#addBox #addSubmitButton {
+    position: absolute;
+    right:5%;
+    bottom:5%;
+    background-color: white;
+    border-radius: 10px;
+    padding:5px 10px;
+    font-weight: bold;
+}
+
+#side {
+    flex:2;
+    display:flex;
+    flex-direction: column;
+
+}
+
+#side > div {
+    border-bottom:3px solid #7addfc;
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #C0FFFF;
+}
+
+#main {
+    flex:8;
+
+    display:flex;
+
+}
+
+#main div {
+    padding:30px;
+    flex:1;
+    background-color:#7addfc;
+    display:none;
+}
+
+#main .tool {
+    position:relative;
+    display:inline-block;
+    background-color: black;
+    color:white;
+    padding:5px 10px;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.cancelIcon {
+    display:none;
+    position:absolute;
+    right:-12px;
+    top:-12px;
+    font-size: 20px;
+    color:red;
+    border-radius: 5px;
+}
+
+
