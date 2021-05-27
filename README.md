@@ -19,7 +19,13 @@
 
 ### :pushpin: 살펴보기  
 * 구조
-* 작동
+![full_img](./readme_img/myWeb1.png)
+![full_img](./readme_img/myWeb2.png)
+* 기능
+1. 오늘의 글귀
+2. 자주 사용하는 웹사이트
+3. 달력과 메모
+4. 내 코딩 도구와 설명 링크
 
 </br>
 
